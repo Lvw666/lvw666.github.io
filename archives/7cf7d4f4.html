@@ -1,0 +1,545 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Sass | 北梦忆南</title><meta name="author" content="Levy"><meta name="copyright" content="Levy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="什么是 Sass  https:&#x2F;&#x2F;www.sass.hk&#x2F; Sass 是一款强化 CSS 的辅助工具，它在 CSS 语法的基础上增加了变量 (variables)、嵌套 (nested rules)、混合 (mixins)、导入 (inline imports) 等高级功能，这些拓展令 CSS 更加强大与优雅。使用 Sass 以及 Sass 的样式库（如 Compass）有助于更好地组织管理样式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sass">
+<meta property="og:url" content="https://weblvw.com/archives/7cf7d4f4.html">
+<meta property="og:site_name" content="北梦忆南">
+<meta property="og:description" content="什么是 Sass  https:&#x2F;&#x2F;www.sass.hk&#x2F; Sass 是一款强化 CSS 的辅助工具，它在 CSS 语法的基础上增加了变量 (variables)、嵌套 (nested rules)、混合 (mixins)、导入 (inline imports) 等高级功能，这些拓展令 CSS 更加强大与优雅。使用 Sass 以及 Sass 的样式库（如 Compass）有助于更好地组织管理样式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230531211422081.png">
+<meta property="article:published_time" content="2022-07-22T09:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-22T09:00:00.000Z">
+<meta property="article:author" content="Levy">
+<meta property="article:tag" content="Sass">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230531211422081.png"><link rel="shortcut icon" href="/img/rainbow.png"><link rel="canonical" href="https://weblvw.com/archives/7cf7d4f4.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="B7Wy-WILKfZuaPWUKmWNuAsCy3P7Ju_JexB4gvoPtDE"/><meta name="baidu-site-verification" content="codeva-WmSFQATd4w"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"bottom","messagePrev":"该文章最后更新于","messageNext":"天前，文章内容可能已经过时，请优先查看最新文章！"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":365},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Levy","link":"链接: ","source":"来源: 北梦忆南","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: false,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Sass',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-22 09:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230531212304060.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">40</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-star"></i><span> 收藏</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/stars/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230531211422081.png')"><nav id="nav"><span id="blog-info"><a href="/" title="北梦忆南"><span class="site-name">北梦忆南</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-star"></i><span> 收藏</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/stars/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Sass</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-22T09:00:00.000Z" title="发表于 2022-07-22 09:00:00">2022-07-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-22T09:00:00.000Z" title="更新于 2022-07-22 09:00:00">2022-07-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Web-%E5%89%8D%E7%AB%AF/">Web 前端</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Web-%E5%89%8D%E7%AB%AF/%E2%98%9B-Sass/">☛ Sass</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Sass"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="什么是-Sass"><a href="#什么是-Sass" class="headerlink" title="什么是 Sass"></a>什么是 Sass</h1><p><img src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230529085155450.png"></p>
+<blockquote>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.sass.hk/">https://www.sass.hk/</a></p>
+<p>Sass 是一款强化 CSS 的辅助工具，它在 CSS 语法的基础上增加了变量 (variables)、嵌套 (nested rules)、混合 (mixins)、导入 (inline imports) 等高级功能，这些拓展令 CSS 更加强大与优雅。使用 Sass 以及 Sass 的样式库（如 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://compass-style.org/">Compass</a>）有助于更好地组织管理样式文件，以及更高效地开发项目。</p>
+<p>让 css 从标记语言变得更像编程语言</p>
+</blockquote>
+<h1 id="scss-和-sass"><a href="#scss-和-sass" class="headerlink" title="scss 和 sass"></a><strong>scss 和 sass</strong></h1><blockquote>
+<p>sass 文件的后缀, 可以是<code>sass</code>, 也可以是<code>scss</code>, 推荐使用<code>scss</code>, 因为代码更像 css 代码</p>
+<p>异同点: scss 是 sass 的一个升级版本，完全兼容 sass 之前的功能，又有了些新增能力。语法形式上有些许不同，最主要的就是 sass 是靠缩进表示嵌套关系，scss 是花括号</p>
+</blockquote>
+<p><img src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230529085246353.png"></p>
+<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a><strong>安装插件</strong></h1><blockquote>
+<p>sass 代码浏览器无法识别, 我们需要把 sass 代码转成 css 代码, 才可以正常的在浏览器中使用, 强大如 vscode, 提供了 sass 转 css 的插件<code>live sass compiler</code>, 可以在你每次写完 sass 代码保存后, 自动转成 css 代码</p>
+</blockquote>
+<p><img src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230529085319494.png"></p>
+<blockquote>
+<p>先新建 sass 文件</p>
+<p>然后可以有两种方法打开插件</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240255570.png#id=OrjZN&originHeight=446&originWidth=1978&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>打开插件后, 会根据 scss 自动生成 css 文件</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240302584.png#id=pVJNm&originHeight=574&originWidth=2358&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>如果不想要<code>.map</code>文件, 可以在设置中关掉</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240304811.png#id=frKFb&originHeight=923&originWidth=1867&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240306793.png#id=i7FTq&originHeight=364&originWidth=1426&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240307546.png#id=RZ9Rq&originHeight=391&originWidth=1822&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>把复制的设置代码, 粘贴到最下面即可, 记得改成<code>false</code></p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240308536.png#id=oNbC3&originHeight=608&originWidth=1478&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h1 id="Scss-语法"><a href="#Scss-语法" class="headerlink" title="Scss 语法"></a><strong>Scss 语法</strong></h1><blockquote>
+<ol>
+<li>嵌套规则</li>
+<li>父选择器</li>
+<li>属性嵌套</li>
+<li>注释</li>
+<li>变量</li>
+<li>数据类型</li>
+<li>运算</li>
+<li>圆括号</li>
+<li>函数</li>
+<li>插值语句</li>
+</ol>
+</blockquote>
+<h2 id="嵌套规则"><a href="#嵌套规则" class="headerlink" title="嵌套规则"></a>嵌套规则</h2><blockquote>
+<p>代码可以嵌套在另一段代码中，内层的样式将它外层的选择器作为父选择器</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240313467.png#id=rIcX4&originHeight=831&originWidth=2425&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>嵌套功能避免了重复输入父选择器，可以让 CSS 结构更易于管理</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240314925.png#id=SPsy2&originHeight=1330&originWidth=1790&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="父选择器"><a href="#父选择器" class="headerlink" title="父选择器"></a>父选择器</h2><blockquote>
+<p>用 <code>&amp;</code> 代表父选择器</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240315289.png#id=ZOKBK&originHeight=969&originWidth=2029&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>编译后的 CSS 文件中 <code>&amp;</code> 将被替换成嵌套外层的父选择器，如果含有多层嵌套，最外层的父选择器会一层一层向下传递</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240319457.png#id=cAelH&originHeight=891&originWidth=1885&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p><code>&amp;</code> 必须作为选择器的第一个字符，其后可以跟随后缀生成复合的选择器</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240320561.png#id=XelF8&originHeight=605&originWidth=2042&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="属性嵌套"><a href="#属性嵌套" class="headerlink" title="属性嵌套"></a>属性嵌套</h2><blockquote>
+<p>有些 CSS 属性有相同的前缀(font-family, font-size, font-weight), 可以把前缀提出来</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240321993.png#id=BzH1b&originHeight=591&originWidth=2013&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>前缀后面也可以接着写自己的属性值</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240324922.png#id=Gl55s&originHeight=578&originWidth=1974&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><blockquote>
+<p>支持多行注释 <code>/* */</code>，以及单行注释 <code>//</code></p>
+<p>多行注释可以完整输出到编译后的 CSS 文件中，而单行注释不会</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240328546.png#id=pPieP&originHeight=1255&originWidth=2180&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>因为注释有中文, 所以会添加<code>@charset &quot;UTF-8&quot;</code> 来指定字符集, 如果没有中文, 则不会添加这一行</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240329309.png#id=rLgOD&originHeight=1235&originWidth=2272&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>注释支持变量</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240331761.png#id=bz5zP&originHeight=319&originWidth=2365&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><blockquote>
+<p>变量以美元符号<code>$</code>开头，赋值方法与 CSS 属性的写法一样</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241534694.png#id=R17hm&originHeight=588&originWidth=1245&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>变量支持块级作用域，嵌套规则内定义的变量只能在嵌套规则内使用（局部变量），不在嵌套规则内定义的变量则可在任何地方使用（全局变量）。</p>
+<p>将局部变量转换为全局变量可以添加 <code>!global</code> 声明</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240335655.png#id=LX4OU&originHeight=677&originWidth=1495&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><blockquote>
+<ol>
+<li>数字，<code>1, 2, 13, 10px</code></li>
+<li>字符串，有引号字符串与无引号字符串，<code>&quot;foo&quot;, &#39;bar&#39;, baz</code></li>
+<li>颜色，<code>blue, #04a3f9, rgba(255,0,0,0.5)</code></li>
+<li>布尔型，<code>true, false</code></li>
+<li>空值，<code>null</code></li>
+<li>数组 (list)，用空格或逗号作分隔符，<code>1.5em 1em 0 2em, Helvetica, Arial, sans-serif</code></li>
+<li>maps, 相当于 JavaScript 的 object，<code>(key1: value1, key2: value2)</code></li>
+</ol>
+</blockquote>
+<blockquote>
+<p>也支持其他 CSS 属性值，比如 Unicode 字符集，或 <code>!important</code> 声明。然而 Sass 不会特殊对待这些属性值，一律视为无引号字符串。</p>
+</blockquote>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><blockquote>
+<p>有引号字符串 ，如 <code>&quot;Lucida Grande&quot;</code> <code>&#39;http://sass-lang.com&#39;</code></p>
+<p>无引号字符串 ，如 <code>sans-serif</code> <code>bold</code>，在编译 CSS 文件时不会改变其类型。</p>
+<p>只有一种情况例外，使用 <code>#&#123;&#125;</code> 时，有引号字符串将被编译为无引号字符串，这样便于在 mixin 中引用选择器名</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240351869.png#id=L220X&originHeight=523&originWidth=2257&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a>数字运算</h2><blockquote>
+<p>支持数字的加减乘除、取整等运算 (<code>+, -, *, /, %</code>)，如果必要会在不同单位间转换值</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240359804.png#id=nkPsD&originHeight=332&originWidth=1611&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="除法运算"><a href="#除法运算" class="headerlink" title="除法运算"></a>除法运算</h2><blockquote>
+<p><code>/</code>有可能是分隔符, 有可能是除法</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240402130.png#id=SKt2C&originHeight=685&originWidth=2261&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>如果既想使用变量, 又想把<code>/</code>当成分隔符, 可以使用<code>#&#123;&#125;</code>语法</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240405946.png#id=z44YW&originHeight=451&originWidth=1812&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="颜色运算"><a href="#颜色运算" class="headerlink" title="颜色运算"></a>颜色运算</h2><blockquote>
+<p>分段计算，分别计算红色，绿色，以及蓝色的值</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240406558.png#id=y60Zu&originHeight=303&originWidth=1858&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>计算 <code>01 + 04 = 05</code> <code>02 + 05 = 07</code> <code>03 + 06 = 09</code>，然后编译</p>
+</blockquote>
+<blockquote>
+<p>数字与颜色值之间也可以进行算数运算，同样也是分段计算的</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240407143.png#id=ZWCLc&originHeight=308&originWidth=1856&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>计算 <code>01 * 2 = 02</code> <code>02 * 2 = 04</code> <code>03 * 2 = 06</code>，然后编译</p>
+</blockquote>
+<blockquote>
+<p>如果颜色值包含 alpha channel（rgba 或 hsla 两种颜色值），必须拥有相等的 alpha 值才能进行运算，因为算术运算不会作用于 alpha 值</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240408068.png#id=JPn3B&originHeight=381&originWidth=2109&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>颜色值的 alpha channel 可以通过 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#opacify-instance_method">opacify</a> 或 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#transparentize-instance_method">transparentize</a> 两个函数进行调整</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240413430.png#id=L7yk8&originHeight=226&originWidth=1128&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201240413952.png#id=hTABr&originHeight=187&originWidth=823&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h2><blockquote>
+<p><code>+</code> 可用于连接字符串</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241414371.png#id=ZKKKK&originHeight=213&originWidth=1075&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>生成的结果是否含有引号, 取决于左边的字符串是否包含引号</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241415395.png#id=d0LLO&originHeight=246&originWidth=1190&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>运算表达式与其他值连用时，用空格做连接符</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241417862.png#id=kudh4&originHeight=196&originWidth=1089&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>在有引号的文本字符串中使用 <code>#&#123;&#125;</code> 插值语句可以添加动态的值</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241418955.png#id=cFLaf&originHeight=259&originWidth=1436&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>空的值被视作插入了空字符串</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241422365.png#id=joFPJ&originHeight=406&originWidth=1328&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="圆括号"><a href="#圆括号" class="headerlink" title="圆括号"></a>圆括号</h2><blockquote>
+<p>圆括号可以用来影响运算的顺序</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241423050.png#id=E0r8R&originHeight=198&originWidth=1105&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241423340.png#id=kta1D&originHeight=206&originWidth=1231&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><blockquote>
+<p>支持函数, rgb()会计算出对应的颜色</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241428756.png#id=N834I&originHeight=198&originWidth=1177&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241429004.png#id=EvJyG&originHeight=216&originWidth=1211&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>lighten() 颜色变浅, darken() 颜色变深</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241541341.png#id=R98XX&originHeight=452&originWidth=1470&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="插值语句"><a href="#插值语句" class="headerlink" title="插值语句"></a>插值语句</h2><blockquote>
+<p>通过 <code>#&#123;&#125;</code> 插值语句可以在选择器或属性名中使用变量</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241431698.png#id=racHf&originHeight=298&originWidth=1255&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>使用 <code>#&#123;&#125;</code> 可以避免运行运算表达式</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241432556.png#id=YOFET&originHeight=292&originWidth=1188&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241433368.png#id=DBjGY&originHeight=308&originWidth=1135&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="引入语法"><a href="#引入语法" class="headerlink" title="引入语法"></a>引入语法</h2><blockquote>
+<p>假设现在有这样一段代码</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241620006.png#id=aU9Ec&originHeight=502&originWidth=1448&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>我们想把不同的颜色做成主题</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241624845.png#id=AvUBw&originHeight=289&originWidth=903&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>我们可以编写两个 scss 文件, 一个是<code>theme1.scss</code>, 一个是<code>theme2.scss</code></p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241628733.png#id=xASOz&originHeight=227&originWidth=1384&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>使用<code>@import</code>在 scss 中引入, 引入不同的 scss 文件, 就相当于选择了不同主题</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241629830.png#id=hb20h&originHeight=493&originWidth=1216&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241630956.png#id=eSG0c&originHeight=434&originWidth=1291&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>这个时候, 插件也会自动把主题 scss 文件进行一个编译</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241631252.png#id=JUlgX&originHeight=240&originWidth=1699&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>如果不想让插件进行编译, 可以在命名时使用<code>_</code>作为文件的前缀</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241634320.png#id=YkGNW&originHeight=412&originWidth=1072&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>有了<code>@import</code>, 我们可以结合项目需要把 scss 进行拆分, 使得逻辑更加清晰, 比如拆成这样</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241654742.png#id=Gfftz&originHeight=675&originWidth=2111&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241655907.png#id=JMgCs&originHeight=778&originWidth=1922&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h2><blockquote>
+<p><a href="/mixin">@mixin </a> 指令允许我们定义一个可以在整个样式表中重复使用的样式。类似于代码段 </p>
+<p><a href="/include">@include </a> 指令可以将 mixin 引入到文档中。 </p>
+<p><a href="/mixin">@mixin </a> 负责定义, <a href="/include">@include </a> 负责导入并使用 </p>
+</blockquote>
+<blockquote>
+<p>比如如果字数超出限制, 显示省略号, 我们通常会写下面的代码</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">	<span class="attribute">overflow</span>: hidden;</span><br><span class="line">	<span class="attribute">white-space</span>: nowrap;</span><br><span class="line">	<span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>假如多个地方都用到了类似的代码呢?</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">overflow</span>: hidden;</span><br><span class="line">	<span class="attribute">white-space</span>: nowrap;</span><br><span class="line">	<span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">	<span class="attribute">overflow</span>: hidden;</span><br><span class="line">	<span class="attribute">white-space</span>: nowrap;</span><br><span class="line">	<span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果直接用之前的<code>@import</code>语法, 我们只能导入导出完整的一段代码</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241729287.png#id=AWidb&originHeight=570&originWidth=910&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>这个时候, 我们可以使用<code>@mixin</code></p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241737624.png#id=flsmd&originHeight=690&originWidth=1394&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>当然<code>@mixin</code>可以配合<code>@import</code></p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241738329.png#id=HdGLu&originHeight=681&originWidth=1817&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<blockquote>
+<p>其实我们发现, <code>.header</code>和<code>.content</code>, 只有<code>width</code>不同, 所以我们可以继续封装, 把<code>width</code>的值当成参数传进去</p>
+</blockquote>
+<p><img src="https://markdown-1253389072.cos.ap-nanjing.myqcloud.com/202201241735718.png#id=rWoBh&originHeight=396&originWidth=1444&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="mixin-的应用"><a href="#mixin-的应用" class="headerlink" title="mixin 的应用"></a>mixin 的应用</h2><blockquote>
+<p>我们编写响应式布局时, 通常会写这样的代码</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">1000px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">	<span class="selector-class">.header</span> &#123;</span><br><span class="line">		<span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.footer</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: olivedrab;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">	<span class="selector-class">.footer</span> &#123;</span><br><span class="line">		<span class="attribute">color</span>: orange;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果觉得代码比较冗余, 可以进行合并</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">1000px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: olivedrab;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">	<span class="selector-class">.header</span> &#123;</span><br><span class="line">		<span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="selector-class">.footer</span> &#123;</span><br><span class="line">		<span class="attribute">color</span>: orange;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这样也有一个弊端, 如果代码量很大, 因为<code>.header</code>样式的代码没有写在一起, 查看的时候不方便</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">1000px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: olivedrab;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="comment">/* 假如有很多代码 */</span></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">	<span class="selector-class">.header</span> &#123;</span><br><span class="line">		<span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="selector-class">.footer</span> &#123;</span><br><span class="line">		<span class="attribute">color</span>: orange;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用 mixin 就可以写成这样</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@mixin ipad &#123;</span><br><span class="line">	@media screen and (min-width: 768px) &#123;</span><br><span class="line">		@content;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">.header &#123;</span><br><span class="line">	width: 1000px;</span><br><span class="line">	@include ipad &#123;</span><br><span class="line">		width: 500px;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">.footer &#123;</span><br><span class="line">	color: olivedrab;</span><br><span class="line">	@include ipad &#123;</span><br><span class="line">		color: orange;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>最后生成的 css 代码和我们之前写的一样</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">1000px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">	<span class="selector-class">.header</span> &#123;</span><br><span class="line">		<span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.footer</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: olivedrab;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">	<span class="selector-class">.footer</span> &#123;</span><br><span class="line">		<span class="attribute">color</span>: orange;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="Sass-和-Less"><a href="#Sass-和-Less" class="headerlink" title="Sass 和 Less"></a><strong>Sass 和 Less</strong></h1><blockquote>
+<p>sass 和 less 都是 css 的预编译处理语言，他们引入了 mixins，参数，嵌套规则，运算，颜色，名字空间，作用域，JavaScript 赋值等 加快了 css 开发效率</p>
+<p>sass 是后端编译, less 是前端编译</p>
+<p>语法略有不同, 学完 sass, 如果工作中需要用到 less, 可以很快的上手</p>
+<p>官网: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://less.bootcss.com/">https://less.bootcss.com/</a></p>
+<p>vscode 插件: easy less, 自动生成 css 文件, 无需配置, 安装即可使用</p>
+</blockquote>
+<p><img src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230529085038482.png"></p>
+<p><img src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230529085114085.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://weblvw.com">Levy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://weblvw.com/archives/7cf7d4f4.html">https://weblvw.com/archives/7cf7d4f4.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://weblvw.com" target="_blank">北梦忆南</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Sass/">Sass</a></div><div class="post_share"><div class="social-share" data-image="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230531211422081.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/d62e352c.html" title="媒体查询"><img class="cover" src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230605100158175.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">媒体查询</div></div></a></div><div class="next-post pull-right"><a href="/archives/bbbbae6f.html" title="VSCode 插件"><img class="cover" src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230531211328069.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">VSCode 插件</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230531212304060.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Levy</div><div class="author-info__description">热爱可抵漫长岁月✨</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">40</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/lvw666"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:lvw0522@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="tencent://message/?uin=674711494&amp;Menu=yes" rel="external nofollow noreferrer" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #4a7dee;"></i></a><a class="social-icon" href="https://twitter.com/@Levy0522" rel="external nofollow noreferrer" target="_blank" title="Twitter"><i class="fa-brands fa-twitter" style="color: #1da1f2;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">当天空黑暗到一定程度，星辰就会熠熠生辉✨</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Sass"><span class="toc-number">1.</span> <span class="toc-text">什么是 Sass</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#scss-%E5%92%8C-sass"><span class="toc-number">2.</span> <span class="toc-text">scss 和 sass</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">安装插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Scss-%E8%AF%AD%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">Scss 语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E8%A7%84%E5%88%99"><span class="toc-number">4.1.</span> <span class="toc-text">嵌套规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%B6%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">4.2.</span> <span class="toc-text">父选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E5%B5%8C%E5%A5%97"><span class="toc-number">4.3.</span> <span class="toc-text">属性嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-number">4.4.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">4.5.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.6.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.7.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E8%BF%90%E7%AE%97"><span class="toc-number">4.8.</span> <span class="toc-text">数字运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%A4%E6%B3%95%E8%BF%90%E7%AE%97"><span class="toc-number">4.9.</span> <span class="toc-text">除法运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E8%BF%90%E7%AE%97"><span class="toc-number">4.10.</span> <span class="toc-text">颜色运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%90%E7%AE%97"><span class="toc-number">4.11.</span> <span class="toc-text">字符串运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%86%E6%8B%AC%E5%8F%B7"><span class="toc-number">4.12.</span> <span class="toc-text">圆括号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">4.13.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%80%BC%E8%AF%AD%E5%8F%A5"><span class="toc-number">4.14.</span> <span class="toc-text">插值语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E8%AF%AD%E6%B3%95"><span class="toc-number">4.15.</span> <span class="toc-text">引入语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mixin"><span class="toc-number">4.16.</span> <span class="toc-text">mixin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mixin-%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">4.17.</span> <span class="toc-text">mixin 的应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sass-%E5%92%8C-Less"><span class="toc-number">5.</span> <span class="toc-text">Sass 和 Less</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/616f4683.html" title="前端性能优化"><img src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230628200315891.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端性能优化"/></a><div class="content"><a class="title" href="/archives/616f4683.html" title="前端性能优化">前端性能优化</a><time datetime="2023-06-06T09:00:00.000Z" title="发表于 2023-06-06 09:00:00">2023-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/5d90ecbd.html" title="跨域认证解决方案 —— JWT"><img src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230628200233002.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="跨域认证解决方案 —— JWT"/></a><div class="content"><a class="title" href="/archives/5d90ecbd.html" title="跨域认证解决方案 —— JWT">跨域认证解决方案 —— JWT</a><time datetime="2023-05-15T09:00:00.000Z" title="发表于 2023-05-15 09:00:00">2023-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/1ae2b49b.html" title="TypeScript 简介"><img src="https://aliyun-oss-lvwei.oss-cn-shanghai.aliyuncs.com/img/image-20230624024503015.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TypeScript 简介"/></a><div class="content"><a class="title" href="/archives/1ae2b49b.html" title="TypeScript 简介">TypeScript 简介</a><time datetime="2023-05-07T09:00:00.000Z" title="发表于 2023-05-07 09:00:00">2023-05-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By Levy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><div><a onclick="window.open('https://beian.miit.gov.cn/#/Integrated/index/')" class="footer-a">皖 ICP 备 2023005342 号</a></div><div><a class="footer-a" onclick="window.open('https://cloud.tencent.com')">本网站由<img class="upy entered loaded" align="absmiddle" src="/img/tencent-cloud.svg" data-ll-status="loaded">提供 CDN 加速服务</a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="8457042375" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-lrctype="0"> </div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

@@ -1,0 +1,6 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://weblvw.com/sitemap.xml
+Sitemap: https:/weblvw.com/baidusitemap.xml
